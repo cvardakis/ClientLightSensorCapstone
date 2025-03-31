@@ -1,0 +1,22 @@
+# Prefilled Configuration File
+
+SERIAL_PORT = None
+BAUD_RATE = 115200
+LOCAL_TIMEZONE = America/Denver
+OS = None
+
+SERVER_URL = http://localhost:8000
+AUTH_ENDPOINT = http://localhost:8000/sensor-auth
+DATA_ENDPOINT = http://localhost:8000/sensor-data
+
+REGISTRATION_KEY = test
+LOCATION = HOME
+SENSOR_ID = STANDIN
+NAME = Sensor One
+LAT = 40.9875
+LONG = 19.08945
+ELEVATION = 4500
+AUTHENTICATED = False
+
+FILE_PATH = ./
+FILE = config

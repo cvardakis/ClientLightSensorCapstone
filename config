@@ -9,9 +9,9 @@ LOCAL_TIMEZONE = America/Denver
 OS = None
 
 # Host Server Connections
-SERVER_URL = 
-AUTH_ENDPOINT =
-DATA_ENDPOINT =
+SERVER_URL = https://utah-skyscope.deno.dev
+AUTH_ENDPOINT = /sensor-auth
+DATA_ENDPOINT = /sensor-data
 
 # Sensor Properties Variable (Change for each sensor)
 REGISTRATION_KEY = test

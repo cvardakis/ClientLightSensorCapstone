@@ -57,13 +57,13 @@ def set_server_url(url: str):
 
 def set_auth_url(url: str):
     global AUTH_ENDPOINT
-    AUTH_ENDPOINT = f"{SERVER_URL}/{url}"
+    AUTH_ENDPOINT = f"{SERVER_URL}{url}"
     print(f"[CONFIG] AUTH_ENDPOINT: {AUTH_ENDPOINT}")
 
 
 def set_data_url(url: str):
     global DATA_ENDPOINT
-    DATA_ENDPOINT = f"{SERVER_URL}/{url}"
+    DATA_ENDPOINT = f"{SERVER_URL}{url}"
     print(f"[CONFIG] DATA_ENDPOINT: {DATA_ENDPOINT}")
 
 

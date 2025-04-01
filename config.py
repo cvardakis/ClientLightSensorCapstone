@@ -27,89 +27,104 @@ FILE = "config"
 
 def set_serial(serial_port: str):
     global SERIAL_PORT
-    print(f"Setting Port {SERIAL_PORT} to {serial_port}")
     SERIAL_PORT = serial_port
-    print(f"Set to {SERIAL_PORT}")
+    print(f"[CONFIG] SERIAL_PORT: {SERIAL_PORT}")
 
 
 def set_baud(baud: int):
     global BAUD_RATE
     BAUD_RATE = baud
+    print(f"[CONFIG] BAUD: {BAUD_RATE}")
 
 
 def set_timezone(timezone: str):
     global LOCAL_TIMEZONE
     LOCAL_TIMEZONE = timezone
+    print(f"[CONFIG] LOCAL_TIMEZONE: {LOCAL_TIMEZONE}")
 
 
 def set_os(operating_system: str):
     global OS
     OS = operating_system
+    print(f"[CONFIG] OS: {OS}")
 
 
 def set_server_url(url: str):
     global SERVER_URL
     SERVER_URL = url
+    print(f"[CONFIG] SERVER_URL: {SERVER_URL}")
 
 
 def set_auth_url(url: str):
     global AUTH_ENDPOINT
     AUTH_ENDPOINT = f"{SERVER_URL}/{url}"
+    print(f"[CONFIG] AUTH_ENDPOINT: {AUTH_ENDPOINT}")
 
 
 def set_data_url(url: str):
     global DATA_ENDPOINT
     DATA_ENDPOINT = f"{SERVER_URL}/{url}"
+    print(f"[CONFIG] DATA_ENDPOINT: {DATA_ENDPOINT}")
 
 
 def set_registration_key(key: str):
     global REGISTRATION_KEY
     REGISTRATION_KEY = key
+    print(f"[CONFIG] REGISTRATION_KEY: {REGISTRATION_KEY}")
 
 
 def set_location(location: str):
     global LOCATION
     LOCATION = location
+    print(f"[CONFIG] LOCATION: {LOCATION}")
 
 
 def set_id(sensor_id: str):
     global SENSOR_ID
     SENSOR_ID = sensor_id
+    print(f"[CONFIG] SENSOR_ID: {SENSOR_ID}")
 
 
 def set_name(name: str):
     global NAME
     NAME = name
+    print(f"[CONFIG] NAME: {NAME}")
 
 
 def set_lat(lat: float):
     global LAT
     LAT = lat
+    print(f"[CONFIG] LAT: {LAT}")
 
 
 def set_lon(lon: float):
     global LONG
     LONG = lon
+    print(f"[CONFIG] LONG: {LONG}")
 
 
 def set_elevation(elevation: float):
     global ELEVATION
     ELEVATION = elevation
+    print(f"[CONFIG] ELEVATION: {ELEVATION}")
 
 
 def set_auth(authenticated: bool):
     global AUTHENTICATED
     AUTHENTICATED = authenticated
+    print(f"[CONFIG] AUTHENTICATED: {AUTHENTICATED}")
 
 
 def set_file_path(file_path: str):
     global FILE_PATH
     FILE_PATH = file_path
+    print(f"[CONFIG] FILE_PATH: {FILE_PATH}")
 
 
 def set_file(file: str):
     global FILE
     FILE = file
+    print(f"[CONFIG] FILE: {FILE}")
 
 
 def load_config():

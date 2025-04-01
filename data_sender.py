@@ -28,7 +28,7 @@ def send_sensor_data(data):
     while True:
         payload = {"id": config.SENSOR_ID, **data}  # Include Sensor ID in json of data
 
-        response = requests.post(DATA_ENDPOINT, json=payload)
+        response = requests.post(config.DATA_ENDPOINT, json=payload)
 
         if response.status_code == 201:
             print(f"[INFO] Data Sent Successfully: {payload}")

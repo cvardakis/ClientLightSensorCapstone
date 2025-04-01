@@ -1,14 +1,19 @@
 # Prefilled Configuration File
 
+# Sensor and Computer Connection Variables
 SERIAL_PORT = None
 BAUD_RATE = 115200
+
+# Program Config
 LOCAL_TIMEZONE = America/Denver
 OS = None
 
-SERVER_URL = http://localhost:8000
-AUTH_ENDPOINT = http://localhost:8000/sensor-auth
-DATA_ENDPOINT = http://localhost:8000/sensor-data
+# Host Server Connections
+SERVER_URL = 
+AUTH_ENDPOINT =
+DATA_ENDPOINT =
 
+# Sensor Properties Variable (Change for each sensor)
 REGISTRATION_KEY = test
 LOCATION = HOME
 SENSOR_ID = STANDIN
@@ -18,5 +23,6 @@ LONG = 19.08945
 ELEVATION = 4500
 AUTHENTICATED = False
 
+# Write paths
 FILE_PATH = ./
 FILE = config

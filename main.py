@@ -7,9 +7,13 @@ Description: main.py controls the client side for getting data from SQM sensor a
              data to online server. If server is not online the data should save locally
              until connection is made with the server
 """
+import sys
 import time
+import os
 import datetime
 import threading
+import traceback
+
 from config import load_config
 from sensor_reader import read_sensor
 from data_sender import send_sensor_data, retry_unsent_data
@@ -42,39 +46,58 @@ def measurement_loop():
     """
     This loop will run every 5 minutes and trigger the data to read from the sensor.
     Then it will attempt to send the data to online server.
-    If server is not online the data should save locally until connection is made
+    If server is not online the data should save locally until connection is made.
     """
     while True:
         wait_until_5_minute()
         data = read_sensor()
         if data:
-            # write_file(data)
             if not send_sensor_data(data):
                 save_unsent_data(data)
 
 
 def retry_loop():
     """
-    This loop will run every 30 minutes to see if failed data is present and attempt to resend it
+    This loop will run every 30 minutes to see if failed data is present and attempt to resend it.
     """
     while True:
         retry_unsent_data()
         time.sleep(1800)
 
 
-# Startup Checks
-load_config()
-startup()
+def project_startup():
+    # Startup Checks
+    load_config()
+    startup()
 
-# Upon startup 2 threads will be started for
-measurement_thread = threading.Thread(target=measurement_loop, daemon=True)
-retry_thread = threading.Thread(target=retry_loop, daemon=True)
+    # Upon startup, two threads will be started for measurement and retry loops.
+    measurement_thread = threading.Thread(target=measurement_loop, daemon=True)
+    retry_thread = threading.Thread(target=retry_loop, daemon=True)
 
-print(f"[INFO] Started measurement thread")
-print(f"[INFO] Started retry thread")
+    print("[INFO] Started measurement thread")
+    print("[INFO] Started retry thread")
 
-measurement_thread.start()
-retry_thread.start()
+    measurement_thread.start()
+    retry_thread.start()
 
-while True:
-    time.sleep(10)
+    # Keep the main thread alive.
+    while True:
+        time.sleep(10)
+
+
+def main():
+    while True:
+        try:
+            project_startup()
+        except Exception as exc:
+            now = datetime.datetime.now()
+            print(f"[ERROR - {now}]: {exc}")
+            traceback.print_exc()
+            # Give a short pause before restarting
+            time.sleep(1)
+            # Restart the process to reset the system state
+            os.execv(sys.executable, [sys.executable] + sys.argv)
+
+
+if __name__ == "__main__":
+    main()

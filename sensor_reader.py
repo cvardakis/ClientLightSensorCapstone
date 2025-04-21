@@ -93,19 +93,3 @@ def clean_value(value):
         measurement = "0.0"
 
     return measurement
-
-    # value = value.strip()
-    # match = re.search(r"^-?\d+(\.\d+)?", value)
-    #
-    # if not match:
-    #     return "0.0"
-    #
-    # cleaned = match.group(0)
-    #
-    # if cleaned.startswith("0") and "." in cleaned:
-    #     return cleaned
-    #
-    # if cleaned.lstrip("0") == "":
-    #     return "0.0"
-    #
-    # return cleaned.lstrip("0") if cleaned not in ["", "-", "0"] else "0.0"

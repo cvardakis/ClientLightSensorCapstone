@@ -2,13 +2,12 @@
 File: setup.py
 Author: connorvardakis
 Date: 3/14/25
-Updated: 3/14/25
-Description: 
+Updated: 4/20/25
+Description: Define all setup processes to verify the sensor is working and authentication can
+             be reached with server
 """
-import os
-import subprocess
-import platform
 
+import platform
 import requests
 import serial
 import serial.tools.list_ports
@@ -17,19 +16,28 @@ import config
 
 
 def get_os():
+    """
+    Gets the operating system - UNUSED
+    """
     operating_system = platform.system()
     config.set_os(operating_system)
     print("[STARTUP] Operating System: ", operating_system)
 
 
 def find_sensor():
+    """
+    Locates the sensor and test to ensure it works
+    """
+    # Find all ports
     ports = serial.tools.list_ports.comports()
     for port in ports:
+        # Search for a port with FT description - defined in user manual
         if "FT" in port.description or "FT" in port.hwid:
             sensor_port = port.device
             print(f"[STARTUP] Potential USB port: {sensor_port}")
 
             try:
+                # After finding port attempts a reading
                 with serial.Serial(sensor_port, config.BAUD_RATE, timeout=1) as ser:
                     ser.write(b"rx")
                     time.sleep(0.5)
@@ -79,6 +87,9 @@ def authenticate_sensor():
 
 
 def get_coords():
+    """
+    Find Long and Lat coordinates -- UNUSED
+    """
     # set manually?
     ip_response = requests.get("https://api.ipify.org?format=json")
     ip = ip_response.json()['ip']
@@ -92,9 +103,6 @@ def get_coords():
     elevation = elevation_data['results'][0]['elevation']
 
     print(f"[INFO] Location Coordinates: {lat}, {lon}, {elevation}")
-    # config.set_lat(lat)
-    # config.set_lon(lon)
-    # config.set_elevation(elevation)
 
 
 def startup():

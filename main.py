@@ -1,8 +1,8 @@
 """
 File: main.py
 Author: connorvardakis
-Date: 2/17/25
-Updated: 3/2/25
+Date: 2/13/25
+Updated: 4/20/25
 Description: main.py controls the client side for getting data from SQM sensor and sending
              data to online server. If server is not online the data should save locally
              until connection is made with the server
@@ -66,6 +66,11 @@ def retry_loop():
 
 
 def project_startup():
+    """
+    This is project startup. It has error catching so if an unexpected error
+    The program would restart. During testing program hit a random DNS server error
+    which is why this was created.
+    """
     # Startup Checks
     load_config()
     startup()

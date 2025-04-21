@@ -1,3 +1,5 @@
+# Considered making a fronted for variable manipulation, but never came to fruition
+
 import tkinter as tk
 from tkinter import messagebox
 import os

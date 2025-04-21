@@ -7,7 +7,7 @@ Description: data_sender.py authenticates sensor on server. Sends data off to se
 """
 import requests
 import config
-from config import DATA_ENDPOINT, set_auth
+from config import set_auth
 from setup import authenticate_sensor
 from data_logger import save_unsent_data, load_unsent_data, clear_unsent_data
 

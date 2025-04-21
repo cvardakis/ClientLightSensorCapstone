@@ -1,3 +1,10 @@
+"""
+File: config.py
+Author: connorvardakis
+Date: 2/17/25
+Updated: 4/20/25
+Description: config.py reads and sets all program variables based on config file
+"""
 import os
 
 SERIAL_PORT = None
@@ -129,8 +136,7 @@ def set_file(file: str):
 
 def load_config():
     print("[INFO] Loading config...")
-    # Mapping of config keywords to their corresponding set functions.
-    # For some values, we wrap the setter in a lambda to handle type conversion.
+    # Mapping of config keywords to their corresponding set functions
     setters = {
         'SERIAL_PORT': set_serial,
         'BAUD_RATE': lambda v: set_baud(int(v)),
@@ -163,7 +169,7 @@ def load_config():
                     key, value = line.split("=", 1)
                     key = key.strip()
                     value = value.strip()
-                    # Only call the set function if the keyword is in our mapping.
+                    # Only call the set function if the keyword is in mapping
                     if key in setters:
                         setters[key](value)
                 except Exception as e:

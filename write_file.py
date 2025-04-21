@@ -4,6 +4,7 @@ Author: connorvardakis
 Date: 2/23/25
 Updated: 2/7/25
 Description: This is a test file to do tests that I think is necessary
+             Tests to see if data cleaning function was working
 """
 import os.path
 from sensor_reader import clean_value
